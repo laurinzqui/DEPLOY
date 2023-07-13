@@ -1,0 +1,2 @@
+# DEPLOY
+primer deploy shelfshare
