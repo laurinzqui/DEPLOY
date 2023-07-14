@@ -68,22 +68,22 @@ public class UserController {
 	}
 	
 	
-	//Metodo GET para traer un producto por id
-		@GetMapping (path="{userId}")
-		public Optional<User> getUsuario(@PathVariable("userId") Long id) {
-			return userService.leerUsuarioPorID(id);
+	//Metodo GET para traer un usuario por email
+		@GetMapping (path="{userEmail}")
+		public Optional<User> getUsuario(@PathVariable("userEmail") String email) {
+			return userService.leerUsuarioPorEmail(email);
 		}
 	
 		
 		
-		//Metodo POST para agregar un producto
+		//Metodo POST para agregar un usuario
 		@PostMapping
 		public User postUser(@RequestBody User usuario) {
 			return userService.crearUsuario(usuario);
 		}//post
 		
 		
-		//Metodo PUT para modificar un producto
+		//Metodo PUT para modificar un usuario
 		//localhost:8080/shelfshare/productos/70
 		@PutMapping (path="{userId}") //path para agregarle el id al endpoint
 		
@@ -97,7 +97,7 @@ public class UserController {
 		
 		
 		
-		//Metodo DELETE para borrar un producto por su ID
+		//Metodo DELETE para borrar un usuario por su ID
 		
 		@DeleteMapping (path="{userId}")
 		public User deleteUser(@PathVariable("userId") Long id) {

@@ -112,6 +112,14 @@ public class UserService {
 			return prodTemporal;
 			
 		}//borrarProducto
+
+
+
+
+		public Optional<User> leerUsuarioPorEmail(String email) {
+			return userRepository.findByEmail(email);
+			
+		}
 		
 	
 	
