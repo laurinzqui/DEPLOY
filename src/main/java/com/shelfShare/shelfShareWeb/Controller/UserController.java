@@ -5,11 +5,17 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.shelfShare.shelfShareWeb.Entity.User;
 import com.shelfShare.shelfShareWeb.Service.UserService;
@@ -68,6 +74,35 @@ public class UserController {
 			return userService.leerUsuarioPorID(id);
 		}
 	
+		
+		
+		//Metodo POST para agregar un producto
+		@PostMapping
+		public User postUser(@RequestBody User usuario) {
+			return userService.crearUsuario(usuario);
+		}//post
+		
+		
+		//Metodo PUT para modificar un producto
+		//localhost:8080/shelfshare/productos/70
+		@PutMapping (path="{userId}") //path para agregarle el id al endpoint
+		
+		public User updateUser(
+				@PathVariable("userId") Long id,
+				@RequestParam(required = false) String nombre,
+				@RequestParam(required = false) String contrasena) {
+			
+			return userService.actualizarUsuario(id, nombre, contrasena);
+		}//updateProducto
+		
+		
+		
+		//Metodo DELETE para borrar un producto por su ID
+		
+		@DeleteMapping (path="{userId}")
+		public User deleteUser(@PathVariable("userId") Long id) {
+			return userService.borrarUsuario(id);
+		}
 	
 	
 

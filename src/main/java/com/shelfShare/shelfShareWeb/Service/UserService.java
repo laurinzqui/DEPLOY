@@ -77,6 +77,8 @@ public class UserService {
 			
 			User prodTemporal = null; //declaro producto temporal con valor nulo, para que sirva como mi calca
 			
+			
+			System.out.println("id:"+id+"nombre:"+nombre+"contrasena:"+contrasena);
 			//Si el producto existe, lo modifico
 			if (userRepository.existsById(id)) { //true
 				//hago la modificacion de sus parametros
@@ -110,11 +112,7 @@ public class UserService {
 			return prodTemporal;
 			
 		}//borrarProducto
-	
-
-	
-	
-	
+		
 	
 	
 }//clase UserService
